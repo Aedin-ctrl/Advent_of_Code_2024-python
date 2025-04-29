@@ -1,39 +1,24 @@
 f = open("input.txt")
 imput_code = f.read()
 
-
-# part 1
-def part1(imput_code):
+# part 1 
+   
+def main(imput_code):
     total = 0
-    list1 = []
-    list2 = []
     
     for i in imput_code.split("\n"):
-        list1.append(i.split("   ")[0])
-        list2.append(i.split("   ")[1])
+        lst = i.split(" ")
         
-    list1.sort()
-    list2.sort()   
-    
-    for i, j in enumerate(list1):
-        total += abs(int(j) - int(list2[i]))
-    
-    return total
-# part 2
-def part2(imput_code):
-    total = 0
-    list1 = []
-    list2 = []
-    
-    for i in imput_code.split("\n"):
-        list1.append(i.split("   ")[0])
-        list2.append(i.split("   ")[1])
-    
-    for i in list1:
-        total += int(i) * (list2.count(i))
-    
-    return total
+        difs = []
         
+        for i in range(len(lst) - 1):
+            diff = int(lst[i+1]) - int(lst[i])
+            difs.append(diff)
+            
+        if all((1 <= num <= 3) or (-3 <= num <= -1) for num in difs):
+            if all(num > 0 for num in difs) or all(num < 0 for num in difs):
+                total += 1
                 
-print("part 1", part1(imput_code)) 
-print("part 2", part2(imput_code))
+    return total
+
+print("part 1", main(imput_code)) 
