@@ -1,5 +1,10 @@
-from day_1_input import imput_code
-#from test_data import imput_code
+with open("input.txt", "r") as file:
+    input_code = file.read().strip()
+
+lines = input_code.splitlines()
+print(lines)
+
+
 
 # part 1
 def part1(imput_code):
